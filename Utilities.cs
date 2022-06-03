@@ -13,10 +13,15 @@ namespace Generics_M3_L1
 			Console.WriteLine(" ");
 			Console.WriteLine("This is your List now:");
 			Console.WriteLine(" ");
-			foreach (var word in alist)
+
+			IEnumerator<string> iterator = alist.GetEnumerator();
+			while (iterator.MoveNext())
 			{
+				string word = (string)iterator.Current;
 				Console.WriteLine(word);
 			}
+			iterator.Reset();
+
 		}
 	}
 }

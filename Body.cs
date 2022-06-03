@@ -13,14 +13,9 @@ namespace Generics_M3_L1
 			Console.WriteLine("Hello! This your Generic List Modification Application or GLMA");
 			Console.WriteLine(" ");
 
-			var randomwords = new List<string>();
-			randomwords.Add("Longing");
-			randomwords.Add("Rusted");
-			randomwords.Add("Seventeen");
-			randomwords.Add("Daybreak");
-			randomwords.Add("Furnace");
-			randomwords.Add("Nine");
-			randomwords.Add("Benign");
+			var randomwords = new CustomList();
+			string[] words = new string[] { "Longing", "Rusted", "Seventeen", "Daybreak", "Furnace", "Nine", "Benign" };
+			randomwords.AddRange(words);
 
 			new Utilities().ShowList(randomwords);
 
@@ -85,7 +80,7 @@ namespace Generics_M3_L1
 			}
 			else
 			{
-			Console.WriteLine("Error");
+				Console.WriteLine("Error");
 			}
 
 			Console.WriteLine(" ");
