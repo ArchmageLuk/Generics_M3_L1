@@ -8,7 +8,7 @@ namespace Generics_M3_L1
 {
     public class Utilities
     {
-		public void ShowList(List<string> alist)
+		public void ShowList(CustomList alist)
 		{
 			Console.WriteLine(" ");
 			Console.WriteLine("This is your List now:");
@@ -18,9 +18,16 @@ namespace Generics_M3_L1
 			while (iterator.MoveNext())
 			{
 				string word = (string)iterator.Current;
-				Console.WriteLine(word);
+				if (false == string.IsNullOrEmpty(word))
+                {
+					Console.WriteLine(word);
+				}
 			}
 			iterator.Reset();
+
+			Console.WriteLine(" ");
+			Console.WriteLine($"Count = {alist.MyCount}");
+			Console.WriteLine($"Capacity = {alist.MyCapacity}");
 
 		}
 	}

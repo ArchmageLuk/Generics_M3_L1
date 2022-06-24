@@ -14,8 +14,6 @@ namespace Generics_M3_L1
 			Console.WriteLine(" ");
 
 			var randomwords = new CustomList();
-			string[] words = new string[] { "Longing", "Rusted", "Seventeen", "Daybreak", "Furnace", "Nine", "Benign" };
-			randomwords.AddRange(words);
 
 			new Utilities().ShowList(randomwords);
 
@@ -28,7 +26,7 @@ namespace Generics_M3_L1
 				Console.WriteLine("Error");
 			}
 
-			randomwords.Add(addword);
+			randomwords.MyAdd(addword);
 			new Utilities().ShowList(randomwords);
 
 			Console.WriteLine(" ");
@@ -37,14 +35,14 @@ namespace Generics_M3_L1
 			string? arrayline = Console.ReadLine();
 			string[] arraylist = arrayline.Split(" ");
 			
-			randomwords.AddRange(arraylist);
+			randomwords.MyAddRange(arraylist);
 			new Utilities().ShowList(randomwords);
 
 			Console.WriteLine(" ");
 			Console.WriteLine("Now we will remove an element from the list.");
 			Console.WriteLine("Enter the word you wish to remove");
 			var removeword = Console.ReadLine();
-			var removed = randomwords.Remove(removeword);
+			var removed = randomwords.MyRemove(removeword);
 
 			if (removed == true)
             {
@@ -63,18 +61,21 @@ namespace Generics_M3_L1
 			Console.WriteLine("Look at full list with indexes:");
 			foreach (var word in randomwords)
             {
-				var ind = randomwords.IndexOf(word);
-				Console.WriteLine($"{word} is {ind}");
+				var ind = Array.IndexOf(randomwords.MyList, word);
+				if (false == string.IsNullOrEmpty(word))
+                {
+					Console.WriteLine($"{word} is {ind}");
+				}
             }
 
 			Console.WriteLine(" ");
 			Console.WriteLine("Now enter the index for the word to be removed");
 			int index = Convert.ToInt32(Console.ReadLine());
 
-			if (index <= randomwords.Count)
+			if (index <= randomwords.MyCount)
 			{
-				var wordremoved = randomwords[index];
-				randomwords.RemoveAt(index);
+				var wordremoved = randomwords.MyList[index];
+				randomwords.MyRemoveAt(index);
 				Console.WriteLine($"You successfully removed word {wordremoved} with index {index}");
 				new Utilities().ShowList(randomwords);
 			}
@@ -90,7 +91,7 @@ namespace Generics_M3_L1
 
 			if (sort == "Sort" ^ sort == "sort")
             {
-				randomwords.Sort();
+				randomwords.MySort();
 			}
 
 			new Utilities().ShowList(randomwords);
